@@ -102,21 +102,21 @@ int main() {
     cout << "--- static_cast ---" << endl;
     int total = 26;
     int count = 6;
-    cout << "Без касту: " << total / count << endl;
+    cout << "Without cast: " << total / count << endl;
     double average = static_cast<double>(total) / count;
-    cout << "З static_cast: " << average << endl;
+    cout << "With static_cast: " << average << endl;
 
     cout << endl << "--- dynamic_cast ---" << endl;
     Number* num = new Real(3.14);
 
     Real* r = dynamic_cast<Real*>(num);
     if (r != nullptr) {
-        cout << "Це Real, значення = " << r->getValue() << endl;
+        cout << "It is Real, value = " << r->getValue() << endl;
     }
 
     Complex* c = dynamic_cast<Complex*>(num);
     if (c == nullptr) {
-        cout << "Це не Complex, dynamic_cast повернув nullptr" << endl;
+        cout << "It is not Complex, dynamic_cast returned nullptr" << endl;
     }
     delete num;
 
@@ -125,29 +125,29 @@ int main() {
     const Real& ref = a;
     Real& changeable = const_cast<Real&>(ref);
     changeable.setValue(2.5);
-    cout << "a після зміни = " << a.getValue() << endl;
+    cout << "a after change = " << a.getValue() << endl;
 
     cout << endl << "--- reinterpret_cast ---" << endl;
     int x = 255;
     double d = static_cast<double>(x);
 
-    cout << "Байти int 255: ";
+    cout << "Bytes of int 255: ";
     printBytes(reinterpret_cast<const unsigned char*>(&x), sizeof(x));
 
-    cout << "Байти double 255.0: ";
+    cout << "Bytes of double 255.0: ";
     printBytes(reinterpret_cast<const unsigned char*>(&d), sizeof(d));
 
-    cout << "Знову десяткове число: " << x << endl;
+    cout << "Decimal again: " << x << endl;
 
-    cout << endl << "--- Суми векторів ---" << endl;
+    cout << endl << "--- Vector sums ---" << endl;
     vector<Real> reals = {1.5, 2.25, -0.75, 4.0};
     vector<Complex> complexes = {Complex(1, 2), Complex(3, -1), Complex(-0.5, 0.5)};
 
-    cout << "Сума Real: ";
+    cout << "Sum of Real: ";
     sumReal(reals).print();
     cout << endl;
 
-    cout << "Сума Complex: ";
+    cout << "Sum of Complex: ";
     sumComplex(complexes).print();
     cout << endl;
 
@@ -157,7 +157,7 @@ int main() {
     mixed.push_back(new Real(-2.5));
     mixed.push_back(new Complex(0.5, 1));
 
-    cout << "Сума змішаного вектора: ";
+    cout << "Sum of mixed vector: ";
     sumMixed(mixed).print();
     cout << endl;
 
